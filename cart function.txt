@@ -1,0 +1,49 @@
+
+
+const buttons = ref([
+  {
+    id: 1,
+    amount: 100,
+    initialAmount: 100,
+    counter: 0,
+  },
+  {
+    id: 2,
+    amount: 200,
+    initialAmount: 200,
+    counter: 0,
+  },
+  {
+    id: 3,
+    amount: 500,
+    initialAmount: 500,
+    counter: 0,
+  },
+]);
+
+const increment = (id) => {
+  const button = buttons.value.find(button => button.id === id);
+  if (button) {
+    button.counter++;
+    button.amount = button.initialAmount * button.counter;
+    total.value += button.initialAmount;
+  }
+}
+
+
+
+
+
+const decrement = (id) => {
+  const button = buttons.value.find(button => button.id === id);
+  if (button && button.counter > 0) {
+    total.value -= button.initialAmount;
+    button.counter--;
+    if (button.counter === 0) {
+      button.amount = button.initialAmount;
+    } else {
+      button.amount = button.initialAmount * button.counter;
+    }
+  }
+}
+</script>
